@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Races</h1>
+  {% if race_list %}
+  <ul>
+    {% for race in race_list %}
+      <li>
+        <a href="{% url 'race-detail' race.pk %}">{{ race.name }}</a> ({{race.date}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no races.</p>
+  {% endif %}
+{% endblock %}
