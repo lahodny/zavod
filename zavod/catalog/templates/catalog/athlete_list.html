@@ -6,7 +6,7 @@
   <ul>
     {% for athlete in athlete_list %}
       <li>
-        <a href="{{ athlete.get_absolute_url }}">{{ athlete.name }} {{ athlete.surname }}</a> ({{athlete.birth_date}})
+        <a href="{% url 'athlete-detail' athlete.pk %}">{{ athlete.name }} {{ athlete.surname }}</a> ({{athlete.birth_date}})
       </li>
     {% endfor %}
   </ul>
@@ -14,3 +14,5 @@
     <p>There are no athletes.</p>
   {% endif %}
 {% endblock %}
+
+<!--{% url 'athlete_detail' athlete.pk %}-->

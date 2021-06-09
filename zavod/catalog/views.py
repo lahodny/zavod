@@ -38,3 +38,7 @@ class AthleteListView(generic.ListView):
 class AthleteDetailView(generic.DetailView):
     model = Athlete
 
+
+#context_object_name = 'athlete_detail'
+#template_name = 'catalog/detail.html'
+

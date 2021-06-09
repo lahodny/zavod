@@ -6,7 +6,7 @@
   <ul>
     {% for race in race_list %}
       <li>
-        <a href="{{ race.get_absolute_url }}">{{ race.name }}</a> ({{race.date}})
+        <a href="{% url 'race-detail' race.pk %}">{{ race.name }}</a> ({{race.date}})
       </li>
     {% endfor %}
   </ul>
