@@ -1,8 +1,23 @@
-pip install django-widget-tweaksasgiref==3.3.1
+asgiref==3.2.10
+automium==0.2.6
+automium-web==0.1.1
+click==8.0.0
+colorama==0.4.4
+dj-database-url==0.5.0
 Django==3.1.7
 django-bootstrap-pagination==1.7.1
 django-mathfilters==1.0.0
+django-widget-tweaks==1.4.8
+Flask==2.0.0
+gunicorn==20.0.4
+itsdangerous==2.0.1
+Jinja2==3.0.1
+legacy==0.1.6
+MarkupSafe==2.0.1
 mysqlclient==2.0.3
 Pillow==8.1.0
+psycopg2-binary==2.8.6
 pytz==2021.1
 sqlparse==0.4.1
+Werkzeug==2.0.1
+whitenoise==5.2.0
