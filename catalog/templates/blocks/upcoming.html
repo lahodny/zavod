@@ -1,0 +1,14 @@
+{% for race in races %}
+                                    <div class="col-sm-4 col-xl-2 mb-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">{{ race.name }}</h4>
+
+                                                <p> {{ race.date }}</p>
+                                                <p>{% for discipline in race.discipline.all %}{{ discipline.name }} {% endfor %}</p>
+                                                <a href="{% url 'race-detail' race.pk %} " class="btn btn-primary">Podrobnosti</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+

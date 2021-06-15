@@ -1,9 +1,12 @@
-{% extends "base.html" %}
+    {% extends "base.html" %}
 
-{% block content %}
-  <h1>Zavody</h1>
-  <p>pocet zavodu:</p>
-  <ul>
-    <li><strong>races:</strong> {{ num_races }}</li>
-  </ul>
-{% endblock %}
+    {% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-3 bg-success text-light p-3">Nadcházející události{{ race.name }}</h2>
+        </div>
+        {% include "blocks/upcoming.html" %}
+    </div>
+    <a href="{% url 'races' %}" class="btn btn-primary">Seznam všech závodů</a>
+    {% endblock %}

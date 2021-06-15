@@ -1,0 +1,17 @@
+      <div class="col-sm-2">
+      {% block sidebar %}
+        <ul class="sidebar-nav">
+          <li><a href="{% url 'index' %}">Domů</a></li>
+          <li><a href="{% url 'races' %}">Závody</a></li>
+          <li><a href="{% url 'athletes' %}">Atleti</a></li>
+        </ul>
+          <ul class="navbar-nav ml-auto">
+           {% if user.is_authenticated %}
+             <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Uživatel: {{ user.get_username }}</a></li>
+             <li class="nav-item"><a href="{% url 'logout'%}" class="nav-link">Odhlásit se</a></li>
+           {% else %}
+             <li class="nav-item"><a href="{% url 'login'%}?next={{request.path}}" class="nav-link">Přihlášení</a></li>
+           {% endif %}
+        </ul>
+     {% endblock %}
+      </div>

@@ -1,10 +1,31 @@
 {% extends "base.html" %}
 
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'lightbox/css/lightbox.min.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h1>Title: {{ race.name }}</h1>
+<div class="row">
+    <div class="col-sm-12 bg-warning">
+        <h2 class="display-4 text-center">Podrobné informace</h2>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-lg-6 mb-3">
+        <h2 class="display-4 mb-3">{{ race.name }}</h2>
+        <div class="bg-secondary text-light p-2 mb-3">{{ race.date }}
+        </div>
+        <p><strong>Disciplíny:</strong> {% for discipline in race.discipline.all %}{{ discipline.name }} {% endfor %}</p>
+        <p><strong>Atleti:</strong> {% for athlete in race.athlete.all %}{{ athlete.name }} {{ athlete.surname }} {% endfor %}</p>
 
-  <p><strong>Name:</strong> <a href="">{{ race.name }}</a></p> <!-- author detail link not yet defined -->
-  <p><strong>Date:</strong> {{ race.date }}</p>
-
-
+    </div>
+</div>
+{% if user.is_authenticated %}
+<a href="{% url 'race-update' race.pk %}" class="btn btn-primary">Editovat</a>
+    {% if perms.movies.delete_film %}
+<a href="{% url 'race-delete' race.pk %} " class="btn btn-danger">Smazat</a>
+    {% endif %}
+{% endif %}
 {% endblock %}

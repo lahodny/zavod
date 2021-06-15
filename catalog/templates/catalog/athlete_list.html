@@ -1,18 +1,35 @@
 {% extends "base.html" %}
 
-{% block content %}
-  <h1>Athletes</h1>
-  {% if athlete_list %}
-  <ul>
-    {% for athlete in athlete_list %}
-      <li>
-        <a href="{% url 'athlete-detail' athlete.pk %}">{{ athlete.name }} {{ athlete.surname }}</a> ({{athlete.birth_date}})
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no athletes.</p>
-  {% endif %}
-{% endblock %}
+{% load bootstrap_pagination %}
 
-<!--{% url 'athlete_detail' athlete.pk %}-->
+{% block title %} {{view_title}} {% endblock %}
+
+{% block content %}
+<div class="row mb-3 bg-warning p-3">
+    <div class="col-sm-12">
+        <h2 class="text-center text-dark">Seznam atletů</h2>
+    </div>
+</div>
+<div class="row">
+    {% for athlete in athlete_list %}
+    <div class="col-sm-4 col-xl-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ athlete.name }} {{ athlete.surname }}</h4>
+
+
+                <p>Disciplíny: {% for discipline in athlete.discipline.all %}{{ discipline.name }} {% endfor %}</p>
+                <p>            {% for country in athlete.country.all %}{{ country.name }} {% endfor %}</p>
+                <img src="{{ athlete.photo.url }}" class="img-fluid" alt="obrazeka">
+
+
+                <a href="{% url 'athlete-detail' athlete.pk %} " class="btn btn-primary mt-3">Podrobnosti</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

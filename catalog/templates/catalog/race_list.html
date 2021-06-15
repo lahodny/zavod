@@ -1,16 +1,34 @@
 {% extends "base.html" %}
 
+{% load bootstrap_pagination %}
+
+{% block title %} {{view_title}} {% endblock %}
+
 {% block content %}
-  <h1>Races</h1>
-  {% if race_list %}
-  <ul>
+<div class="row mb-3 bg-warning p-3">
+    <div class="col-sm-12">
+        <h2 class="text-center text-dark">Seznam závodů</h2>
+    </div>
+</div>
+<div class="row">
     {% for race in race_list %}
-      <li>
-        <a href="{% url 'race-detail' race.pk %}">{{ race.name }}</a> ({{race.date}})
-      </li>
+    <div class="col-sm-4 col-xl-2 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ race.name }}</h4>
+
+                <p> {{ race.date }}</p>
+                <p>{% for discipline in race.discipline.all %}{{ discipline.name }} {% endfor %}</p>
+                <a href="{% url 'race-detail' race.pk %} " class="btn btn-primary">Podrobnosti</a>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no races.</p>
-  {% endif %}
+</div>
+
+
+
+{% if perms.catalog.can_add_race %}
+    <a href="{% url 'race-create' %} " class="btn btn-success">Vytvořit nový závod</a>
+{% endif %}
 {% endblock %}

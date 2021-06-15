@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'zavod',
-    #'bootstrap_pagination',
+    'bootstrap_pagination',
     #'mathfilters',
     'widget_tweaks',
 ]

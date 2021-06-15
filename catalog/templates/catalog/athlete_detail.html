@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Title: {{ athlete.name }}</h1>
+  <h1>{{ athlete.name }} {{ athlete.surname }}</h1>
 
-  <p><strong>Name:</strong> <a href="">{{ athlete.name }}</a></p> <!-- author detail link not yet defined -->
-  <p><strong>Date:</strong> {{ athlete.birth_date }}</p>
+
+<p><strong>Datum narození:</strong> {{ athlete.birth_date }}</p>
+                <p><strong>Disciplíny:</strong> {% for discipline in athlete.discipline.all %}{{ discipline.name }} {% endfor %}</p>
+                <p><strong>Země:</strong> {{ athlete.country.name }}  <img src="{{ athlete.country.flag.url }}" class="img-flag" alt="obrazek">   </p>
+                <img src="{{ athlete.photo.url }}" class="img-fluid" alt="obrazek">
+
 
 
 {% endblock %}
