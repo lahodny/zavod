@@ -7,6 +7,6 @@ jmeno i heslo admina je student
 git clone https://github.com/lahodny/zavod  
 cd zavod  
 python -m venv venv  
-venv\Scripts\activate  
+venv\Scripts\activate  -win   source venv/bin/activate  -linux
 pip install -r requirements.txt  
 python manage.py runserver  
